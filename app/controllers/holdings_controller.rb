@@ -7,6 +7,9 @@ class HoldingsController < ApplicationController
   def index
     @holdings = Holding.all
     @user = current_user 
+    p @user_account_balance = @user.account_balance
+
+    p @user.holdings
   end
 
   # GET /holdings/1
