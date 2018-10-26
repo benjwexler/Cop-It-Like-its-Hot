@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @holding.user_id %>
+</p>
+
+<p>
+  <strong>Stock symbol:</strong>
+  <%= @holding.stock_symbol %>
+</p>
+
+<p>
+  <strong>Shares:</strong>
+  <%= @holding.shares %>
+</p>
+
+<%= link_to 'Edit', edit_holding_path(@holding) %> |
+<%= link_to 'Back', holdings_path %>
