@@ -1,15 +1,15 @@
 class HoldingsController < ApplicationController
   before_action :set_holding, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  include ActionView::Helpers::NumberHelper
   # GET /holdings
   # GET /holdings.json
   def index
-    @holdings = Holding.all
+    # @holdings = Holding.all
     @user = current_user 
-    p @user_account_balance = @user.account_balance
+    p @user_account_balance = number_to_currency(@user.account_balance)
 
-    p @user.holdings
+    p @holdings = @user.holdings
   end
 
   # GET /holdings/1
