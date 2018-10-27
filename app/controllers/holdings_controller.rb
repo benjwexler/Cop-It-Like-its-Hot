@@ -7,6 +7,7 @@ class HoldingsController < ApplicationController
   # GET /holdings.json
   def index
     @user = current_user 
+    
 
     # displays how much cash the user has for purchases 
     p @user_account_balance = number_to_currency(@user.account_balance)
@@ -64,16 +65,20 @@ class HoldingsController < ApplicationController
     # p holding_params["user_id"]
     # p params[:user_id]
     # p params[:stock_symbol]
-    # p params["holding"]["stock_symbol"]
+    p params["holding"]["stock_symbol"]
     @user = current_user 
     @holdings = @user.holdings
+    p shares_to_be_added = params["holding"]["shares"].to_i
+    p current_user_id = @user.id
 
     # p @holdings.where(stock_symbol: ["fb"]).length 
   
     p user_owned_stock = params["holding"]["stock_symbol"]
     p " ndein edij efije"
     if @holdings.where(stock_symbol: [user_owned_stock]).length == 0
-      @holding = Holding.new(holding_params)
+      # @holding = Holding.new(holding_params)
+      @holding = Holding.new(:user_id => current_user_id, :stock_symbol => user_owned_stock, :shares => shares_to_be_added)
+      # @holding = Holding.new(holding_params)
       respond_to do |format|
         if @holding.save
           format.html { redirect_to @holding, notice: 'Holding was successfully created.' }
@@ -86,7 +91,7 @@ class HoldingsController < ApplicationController
     else
       p  holding_to_be_updated = @holdings.where(stock_symbol: [user_owned_stock])[0]
       p  previous_shares_owned = holding_to_be_updated.shares
-      p shares_to_be_added = params["holding"]["shares"].to_i
+      
       current_shares = previous_shares_owned + shares_to_be_added
         # p Holding.find(holding_id_to_be_updated)
         holding_to_be_updated.update_attribute(:shares, current_shares)
