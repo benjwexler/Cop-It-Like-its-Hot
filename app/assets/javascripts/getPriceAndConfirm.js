@@ -58,6 +58,7 @@ let confirmTradeContainer = document.getElementById("confirmTradeContainer")
 let getPriceButton = document.getElementById("getPriceButton")
 let cancelPurchaseBtn = document.getElementById("cancelPurchaseBtn")
 const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
+const hiddenAccountBalance = parseFloat(document.getElementById("hiddenAccountBalance").innerText)
 
 
 function hideGetPrice(event) {

@@ -10,7 +10,7 @@ class HoldingsController < ApplicationController
     
 
     # displays how much cash the user has for purchases 
-    p @user_account_balance = number_to_currency(@user.account_balance)
+    p @user_account_balance = @user.account_balance
 
     p @holdings = @user.holdings
 
