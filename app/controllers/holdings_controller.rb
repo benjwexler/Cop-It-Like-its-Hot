@@ -1,15 +1,53 @@
 class HoldingsController < ApplicationController
   before_action :set_holding, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  include ActionView::Helpers::NumberHelper
 
   # GET /holdings
   # GET /holdings.json
   def index
-    @holdings = Holding.all
+    # @holdings = Holding.all
     @user = current_user 
-    p @user_account_balance = @user.account_balance
+    p @user_account_balance = number_to_currency(@user.account_balance)
 
-    p @user.holdings
+    p @holdings = @user.holdings
+
+    @holdingsObj = {}
+    i = 1
+    
+    @holdings.each do |holding|
+        
+        p IEX::Resources::Price.get(holding.stock_symbol)
+        
+        @holdingsObj[i] = {
+              "stock_name" => holding.stock_symbol,
+              "openingPrice" => IEX::Resources::OHLC.get(holding.stock_symbol).open.price,
+              "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
+              "shares" => holding.shares
+              }
+        
+        # [IEX::Resources::Price.get(holding.stock_symbol), holding.shares ]
+        # holding.shares
+        i+=1 
+    end 
+    # @holdingsObj.each do |holding|
+    #   p holding
+    # end 
+    i =1 
+    @length = @holdingsObj.length
+
+    while i <= @length
+      p @holdingsObj[i]["stock_name"]
+      p @holdingsObj[i]["openingPrice"]
+      p @holdingsObj[i]["currentPrice"]
+      p @holdingsObj[i]["shares"]
+      i+=1
+    end 
+
+
+    # p IEX::Resources::Price.get('aapl')
+    # applOhlc = IEX::Resources::OHLC.get('aapl')
+    # p applOhlc.open.price
   end
 
   # GET /holdings/1
