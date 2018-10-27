@@ -6,7 +6,6 @@ class HoldingsController < ApplicationController
   # GET /holdings
   # GET /holdings.json
   def index
-    # @holdings = Holding.all
     @user = current_user 
     p @user_account_balance = number_to_currency(@user.account_balance)
 
@@ -16,23 +15,15 @@ class HoldingsController < ApplicationController
     i = 1
     
     @holdings.each do |holding|
-        
-        p IEX::Resources::Price.get(holding.stock_symbol)
-        
         @holdingsObj[i] = {
               "stock_name" => holding.stock_symbol,
               "openingPrice" => IEX::Resources::OHLC.get(holding.stock_symbol).open.price,
               "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
               "shares" => holding.shares
               }
-        
-        # [IEX::Resources::Price.get(holding.stock_symbol), holding.shares ]
-        # holding.shares
         i+=1 
     end 
-    # @holdingsObj.each do |holding|
-    #   p holding
-    # end 
+
     i =1 
     @length = @holdingsObj.length
 
@@ -44,10 +35,6 @@ class HoldingsController < ApplicationController
       i+=1
     end 
 
-
-    # p IEX::Resources::Price.get('aapl')
-    # applOhlc = IEX::Resources::OHLC.get('aapl')
-    # p applOhlc.open.price
   end
 
   # GET /holdings/1
@@ -67,6 +54,14 @@ class HoldingsController < ApplicationController
   # POST /holdings
   # POST /holdings.json
   def create
+    p " ndein edij efije"
+    p holding_params["user_id"]
+    p params[:user_id]
+    p params[:stock_symbol]
+    p params["holding"]["stock_symbol"]
+  
+
+    p " ndein edij efije"
     @holding = Holding.new(holding_params)
 
     respond_to do |format|
