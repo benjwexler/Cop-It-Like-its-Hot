@@ -34,13 +34,13 @@ class HoldingsController < ApplicationController
     i =1 
     @length = @holdingsObj.length
 #this while loop will be put into the html.erb file to create the needed rows for portfolio
-    while i <= @length
-      p @holdingsObj[i]["stock_name"]
-      p @holdingsObj[i]["openingPrice"]
-      p @holdingsObj[i]["currentPrice"]
-      p @holdingsObj[i]["shares"]
-      i+=1
-    end 
+    # while i <= @length
+    #   p @holdingsObj[i]["stock_name"]
+    #   p @holdingsObj[i]["openingPrice"]
+    #   p @holdingsObj[i]["currentPrice"]
+    #   p @holdingsObj[i]["shares"]
+    #   i+=1
+    # end 
 
   end
 
