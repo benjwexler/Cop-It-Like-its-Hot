@@ -1,38 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Transactions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Type</th>
-      <th>Stock symbol</th>
-      <th>Shares</th>
-      <th>Price Per Share</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @transactions.each do |transaction| %>
-      <tr>
-        <td><%= transaction.user_id %></td>
-        <td><%= transaction.buy_or_sell %></td>
-        <td><%= transaction.stock_symbol %></td>
-        <td><%= transaction.shares %></td>
-        <td><%= number_to_currency(transaction.price_per_share) %></td>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Transaction', new_transaction_path %>
 
 <div id="portfolioBalanceContainer">
         <div id="portfolioBalanceTextContainer">
@@ -46,90 +17,34 @@
     <div id="holdingsAndPurchaseContainer">
         <div id="holdingsOuterContainer">
             <div id="holdingsMainContainer">
+
+            <% @transactions.each do |transaction| %>
+              <div class="holdingsRow">
+                <div class="holdingsStockName">
+                  <%= transaction.buy_or_sell %> (<%= transaction.stock_symbol %>)
+                </div>
+                <div class="dashContainer">
+                        -
+                </div>
+                <div class="holdingsShares">
+                  <%= transaction.shares %> Shares
+                </div>
+
+                <div class="holdingsValuePerStock">
+                    <%= number_to_currency(transaction.price_per_share) %> <span class="perShareText">(per share)</span>
+                </div>
+               
+              </div>
+              <br>
+            <% end %>
              
-                <div class="holdingsRow">
-                    <div class="holdingsStockName">
-                        BUY (AAPL)
-                    </div>
-                    <div class="dashContainer">
-                        -
-                    </div>
-                    <div class="holdingsShares">
-                        6 Shares
-                    </div>
-                    <div class="holdingsValuePerStock">
-                        $2043.79 <span class="perShareText">(per share)</span>
-                    </div>
-                </div>
-                <br>
-                <div class="holdingsRow">
-                    <div class="holdingsStockName">
-                        BUY (AAPL)
-                    </div>
-                    <div class="dashContainer">
-                        -
-                    </div>
-                    <div class="holdingsShares">
-                        6 Shares
-                    </div>
-                    <div class="holdingsValuePerStock">
-                        $2043.79 <span class="perShareText">(per share)</span>
-                    </div>
-                </div>
-                <br>
-                <div class="holdingsRow">
-                    <div class="holdingsStockName">
-                        BUY (AAPL)
-                    </div>
-                    <div class="dashContainer">
-                        -
-                    </div>
-                    <div class="holdingsShares">
-                        6 Shares
-                    </div>
-                    <div class="holdingsValuePerStock">
-                        $2043.79 <span class="perShareText">(per share)</span>
-                    </div>
-                </div>
-                <br>
-                <div class="holdingsRow">
-                    <div class="holdingsStockName">
-                        BUY (AAPL)
-                    </div>
-                    <div class="dashContainer">
-                        -
-                    </div>
-                    <div class="holdingsShares">
-                        6 Shares
-                    </div>
-                    <div class="holdingsValuePerStock">
-                        $2043.79 <span class="perShareText">(per share)</span>
-                    </div>
-                </div>
-                <br>
-                <div class="holdingsRow">
-                    <div class="holdingsStockName">
-                        BUY (AAPL)
-                    </div>
-                    <div class="dashContainer">
-                        -
-                    </div>
-                    <div class="holdingsShares">
-                        6 Shares
-                    </div>
-                    <div class="holdingsValuePerStock">
-                        $2043.79 <span class="perShareText">(per share)</span>
-                    </div>
-                </div>
-                <br>
-
-
-
-
-
+                
+              
             </div>
 
         </div>
       
     </div>
 </div>
+
+<%= link_to 'New Transaction', new_transaction_path %>
