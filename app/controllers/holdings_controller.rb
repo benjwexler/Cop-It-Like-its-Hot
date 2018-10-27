@@ -18,6 +18,8 @@ class HoldingsController < ApplicationController
     @holdingsObj = {}
     i = 1
 
+    @portfolio_gross = 0 
+
     
     # the .each goes through the users holdings and creates and object with all relevant info to be displayed on screen
     
@@ -28,9 +30,12 @@ class HoldingsController < ApplicationController
               "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
               "shares" => holding.shares
               }
+
+              @portfolio_gross += (@holdingsObj[i]["currentPrice"] * holding.shares)
         i+=1 
     end 
 
+    p @portfolio_gross = number_to_currency(@portfolio_gross)
     i =1 
     @length = @holdingsObj.length
 #this while loop will be put into the html.erb file to create the needed rows for portfolio
