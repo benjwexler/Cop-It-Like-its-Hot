@@ -17,7 +17,7 @@
     <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.user_id %></td>
-        <td><%= transaction.type %></td>
+        <td><%= transaction.buy_or_sell %></td>
         <td><%= transaction.stock_symbol %></td>
         <td><%= transaction.shares %></td>
         <td><%= link_to 'Show', transaction %></td>
