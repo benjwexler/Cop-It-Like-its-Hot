@@ -25,14 +25,9 @@ class HoldingsController < ApplicationController
               "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
               "shares" => holding.shares
               }
-        
-        # [IEX::Resources::Price.get(holding.stock_symbol), holding.shares ]
-        # holding.shares
         i+=1 
     end 
-    # @holdingsObj.each do |holding|
-    #   p holding
-    # end 
+
     i =1 
     @length = @holdingsObj.length
 
