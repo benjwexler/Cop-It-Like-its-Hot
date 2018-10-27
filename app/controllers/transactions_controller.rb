@@ -25,7 +25,14 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @user = current_user 
+    current_user_id = @user.id
+    shares_to_be_added = params["transaction"]["shares"].to_i
+    user_owned_stock = params["transaction"]["stock_symbol"]
+    p type_of_transaction = params["transaction"]["buy_or_sell"]
+    p "bnefijnfekle l"
+    @transaction = Transaction.new(:user_id => current_user_id, :buy_or_sell => type_of_transaction, :stock_symbol => user_owned_stock, :shares => shares_to_be_added)
+    # @transaction = Transaction.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
