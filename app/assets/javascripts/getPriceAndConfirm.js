@@ -1,4 +1,18 @@
-function firstIexCall() {
+
+    
+
+
+
+$(function(){
+let getPriceForm = document.getElementById("getPriceForm")
+let confirmTradeContainer = document.getElementById("confirmTradeContainer")
+let getPriceButton = document.getElementById("getPriceButton")
+let cancelPurchaseBtn = document.getElementById("cancelPurchaseBtn")
+const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
+const hiddenAccountBalance = parseFloat(document.getElementById("hiddenAccountBalance").innerText)
+
+function firstIexCall(stockSymbol, quantity ) {
+    console.log("Hey")
     $.ajax({
         url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/price`,
         // dataType: 'jsonp',
@@ -6,9 +20,9 @@ function firstIexCall() {
             console.log(data)
             console.log(data * quantity)
             fullPrice = data * quantity
-            if(fullPrice < cashBalance) { 
+            if(fullPrice < hiddenAccountBalance) { 
             fullPrice = fullPrice.toFixed(2)
-            document.getElementById("currentPrice").innerText = `The total price is $${fullPrice}`
+            document.getElementById("stockQuote").innerText = `$${fullPrice} is the cost for 6 shares of ${stockSymbol}`
             document.getElementById("buyStock").style.display = "none";
             document.getElementById("priceQuoteContainer").style.display = "flex";
             } else {
@@ -19,8 +33,9 @@ function firstIexCall() {
         }
 
     });
+}
 
-    $("#buyStock").submit(function (event) {
+    $("#getPriceForm").submit(function (event) {
         event.preventDefault();
         stockSymbol = document.getElementById("stock_symbol").value
         quantity = document.getElementById("numberOfShares").value
@@ -34,7 +49,7 @@ function firstIexCall() {
             // if (symbolsObj[`${stockSymbol.toUpperCase()}`] === 1) {
 
             
-                firstIexCall() 
+                firstIexCall(stockSymbol, quantity) 
 
             // } else {
             //     alert("Fake Stock!")
@@ -48,23 +63,33 @@ function firstIexCall() {
 
 
     });
-    
-}
-
-
-$(function(){
-let getPriceForm = document.getElementById("getPriceForm")
-let confirmTradeContainer = document.getElementById("confirmTradeContainer")
-let getPriceButton = document.getElementById("getPriceButton")
-let cancelPurchaseBtn = document.getElementById("cancelPurchaseBtn")
-const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
-const hiddenAccountBalance = parseFloat(document.getElementById("hiddenAccountBalance").innerText)
 
 
 function hideGetPrice(event) {
     event.preventDefault()
     getPriceForm.style.display = "none";
     confirmTradeContainer.style.display = "block"
+    event.preventDefault();
+        stockSymbol = document.getElementById("stock_symbol").value
+        quantity = document.getElementById("numberOfShares").value
+        //   var data = $(this).serializeArray();
+        let fullPrice
+        console.log(quantity);
+        console.log(parseInt(quantity))
+
+        if ((parseInt(quantity)) && (parseInt(quantity) > 0)) {
+
+            // if (symbolsObj[`${stockSymbol.toUpperCase()}`] === 1) {
+
+            
+                firstIexCall(stockSymbol, quantity) 
+
+            // } else {
+            //     alert("Fake Stock!")
+            // }
+        } else {
+            alert("Please enter a valid quantity")
+        }
 }
 
 function returnToGetPrice(event){
