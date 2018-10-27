@@ -50,7 +50,8 @@
     <div id="makePurchaseOuterContainer">
         <div id="makePurchaseMainContainer">
             <div id="cashBalanceContainer">
-                Cash - <%= @user_account_balance %>
+                Cash - <%= number_to_currency(@user_account_balance) %>
+                <span id="hiddenAccountBalance"><%=@user_account_balance%></span>
             </div>
             <br>
             <form id="getPriceForm">
