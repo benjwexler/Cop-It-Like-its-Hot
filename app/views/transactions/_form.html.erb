@@ -11,10 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
 
   <div class="field">
     <%= form.label :buy_or_sell %>
@@ -29,6 +25,11 @@
   <div class="field">
     <%= form.label :shares %>
     <%= form.number_field :shares %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per_share %>
+    <%= form.number_field :price_per_share, :class => 'text_field', step: :any %>
   </div>
 
   <div class="actions">
