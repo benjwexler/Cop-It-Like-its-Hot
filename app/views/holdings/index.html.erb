@@ -12,37 +12,38 @@
 <div id="holdingsAndPurchaseContainer">
     <div id="holdingsOuterContainer">
         <div id="holdingsMainContainer">
-            
-
             <% i = 1 %>
             <% while i <= @length %>
             <div class="holdingsRow">
-                <div class="holdingsStockName">
-                <%= @holdingsObj[i]["stock_name"]%>
+                <%  if @holdingsObj[i]["openingPrice"] > @holdingsObj[i]["currentPrice"] %>
+                    <div class="holdingsStockName stockInRed">
+                <%  elsif @holdingsObj[i]["openingPrice"] == @holdingsObj[i]["currentPrice"] %>
+                    <div class="holdingsStockName stockNeutral">
+                <% else %>
+                    <div class="holdingsStockName">
+                <% end %>
+                    <%= @holdingsObj[i]["stock_name"]%>
                 </div>
                 <div class="dashContainer">
                     -
                 </div>
                 <div class="holdingsShares">
-                <%= @holdingsObj[i]["shares"]%> Shares
+                    <%= @holdingsObj[i]["shares"]%> Shares
                 </div>
-                <div class="holdingsValuePerStock">
-                <%= number_to_currency(@holdingsObj[i]["currentPrice"])%>
+                <%  if @holdingsObj[i]["openingPrice"] > @holdingsObj[i]["currentPrice"] %>
+                    <div class="holdingsValuePerStock stockInRed">
+                <%  elsif @holdingsObj[i]["openingPrice"] == @holdingsObj[i]["currentPrice"] %>
+                    <div class="holdingsValuePerStock stockNeutral">
+                <% else %>
+                    <div class="holdingsValuePerStock">
+                <% end %>
+                    <%= number_to_currency(@holdingsObj[i]["currentPrice"])%>
                 </div>
             </div>
             <br>
-            
             <%  p @holdingsObj[i]["openingPrice"]%>
-            
-            
                 <% i+=1 %>
               <% end %>
-          
-
-
-
-
-
         </div>
 
     </div>
