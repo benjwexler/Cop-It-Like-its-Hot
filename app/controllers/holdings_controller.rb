@@ -34,8 +34,9 @@ class HoldingsController < ApplicationController
               @portfolio_gross += (@holdingsObj[i]["currentPrice"] * holding.shares)
         i+=1 
     end 
-
-    p @portfolio_gross = number_to_currency(@portfolio_gross)
+    # @hidden_portfolio_gross = @portfolio_gros
+    # p @portfolio_gross = number_to_currency(@portfolio_gross)
+    p @portfolio_gross
     i =1 
     @length = @holdingsObj.length
 #this while loop will be put into the html.erb file to create the needed rows for portfolio

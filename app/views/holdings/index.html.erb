@@ -3,8 +3,9 @@
 <div id="portfolioBalanceContainer">
 <div id="portfolioBalanceTextContainer">
     <div id="portfolioBalanceText">
-        Portfolio (<%= @portfolio_gross %>)
+        Portfolio (<%= number_to_currency(@portfolio_gross) %>)
     </div>
+    <div id="hiddenPortfolioValuation"> <%=@portfolio_gross %> </div>
 </div>
 </div>
 <div id="bossContainer">
