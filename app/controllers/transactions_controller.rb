@@ -6,6 +6,7 @@ class TransactionsController < ApplicationController
   def index
     @user = current_user 
     @transactions = @user.transactions
+    
   end
 
   # GET /transactions/1
@@ -32,8 +33,15 @@ class TransactionsController < ApplicationController
     p type_of_transaction = params["transaction"]["buy_or_sell"]
     p price_per_share = params["transaction"]["price_per_share"].to_f
     p "bnefijnfekle l"
+    # I have hard coded the "buy_or_sell" type to be "BUY". If I add a sell feature this has to be changed
     @transaction = Transaction.new(:user_id => current_user_id, :buy_or_sell => "BUY", :stock_symbol => user_owned_stock, :shares => shares_to_be_added, :price_per_share => price_per_share)
     # @transaction = Transaction.new(transaction_params)
+    user_account_balance_before_transaction =   @user.account_balance
+    p "XXXXXXXXXXX"
+    p total_price_of_transaction = price_per_share * shares_to_be_added
+    p "XXXXXXXXXXX"
+    p updated_user_account_balance = user_account_balance_before_transaction - total_price_of_transaction
+    @user.update_attribute(:account_balance, updated_user_account_balance)
 
     respond_to do |format|
       if @transaction.save
