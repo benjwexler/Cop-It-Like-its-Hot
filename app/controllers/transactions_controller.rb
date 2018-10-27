@@ -1,10 +1,11 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @user = current_user 
+    @transactions = @user.transactions
   end
 
   # GET /transactions/1
@@ -69,6 +70,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:user_id, :type, :stock_symbol, :shares)
+      params.require(:transaction).permit(:user_id, :buy_or_sell, :stock_symbol, :shares)
     end
 end
