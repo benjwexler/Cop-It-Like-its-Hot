@@ -8,12 +8,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Spicy+Rice" rel="stylesheet">
+    </head>
 
   <body>
   <nav class="navbar navbar-expand-md navbar-light navbarText">
-        <a id="logoText" class="navbar-brand">
-            Cop it Like it's Hot
+        <a  class="navbar-brand">
+        <%= image_tag image_path("bull_icon.png"), :id => "navbarLogo" %>
+            <span id="logoText"  >Neon Bull Trading</span>
+
         </a>
         <button id="hamburgerMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">

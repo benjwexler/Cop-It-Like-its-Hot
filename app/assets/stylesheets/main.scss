@@ -6,7 +6,8 @@
 body {
     /* background-color: rgb(61, 151, 187); */
     /* font-family: 'Krub', sans-serif; */
-    background: rgba(255, 255, 255, 0.384)
+    background: rgba(255, 255, 255, 0.384);
+    font-family: 'Righteous', cursive;
 }
 
 .navbar {
@@ -15,11 +16,41 @@ body {
     margin: auto;
     border-bottom: 1px solid rgba(14, 205, 154, 0.315);
     background: black;
+    font-family: 'Righteous', cursive;
 }
 
-#kicklrLogo {
-    width: 30px;
-    height: 30px;
+#logoText {
+    // font-family: 'Spicy Rice', cursive;
+    text-align: center;
+    padding-left: 10px;
+    font-family: 'Righteous', cursive;
+    text-decoration: underline overline rgb(203, 114, 230);
+    text-underline-position: under;
+    
+    // text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+    //              10px 20px 5px rgba(0,0,0,0.05),
+    //              -10px 20px 5px rgba(0,0,0,0.05);
+    
+}
+
+#navbarLogo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 5px solid rgb(234, 255, 0) !important;
+    border-left: 3px solid #7C67CB !important;
+    border-right: 3px solid #7C67CB !important;
+    
+    // border: 1px dashed white;
+    
+}
+
+#graphGif {
+    width: 100%;
+    max-width: 500px;
+    // margin-left: 25%;
+    height: 180px;
+    border: 25px solid black;
 }
 
 .navbarText {
@@ -28,6 +59,7 @@ body {
 
 .nav-link {
     color: #0ECD99 !important; 
+    // text-decoration: underline  white;
 }
 
 #marginRight {
@@ -50,7 +82,8 @@ body {
     width: 500px;
     padding: 40px;
     margin: auto;
-    margin-top: 150px;
+    // margin-top: 150px;
+    margin-top: 3px;
     border: solid 5px black;
     display: flex;
     flex-direction: column;
@@ -77,6 +110,10 @@ body {
 
 #hamburgerMenu {
     background: white;
+    // border: 10px solid rgb(234, 255, 0) !important;
+    // border-left: 3px solid #7C67CB !important;
+    // border-right: 3px solid #7C67CB !important;
+    // border-radius: 50%;
 }
 
 #topRightNavContainer {
