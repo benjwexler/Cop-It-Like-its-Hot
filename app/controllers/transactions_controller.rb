@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
     @user = current_user 
     current_user_id = @user.id
     shares_to_be_added = params["transaction"]["shares"].to_i
-    user_owned_stock = params["transaction"]["stock_symbol"]
+    user_owned_stock = params["transaction"]["stock_symbol"].upcase
     type_of_transaction = params["transaction"]["buy_or_sell"]
     price_per_share = params["transaction"]["price_per_share"].to_f
    
