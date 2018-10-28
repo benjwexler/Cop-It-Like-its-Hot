@@ -27,17 +27,17 @@ class HoldingsController < ApplicationController
     
     # the .each goes through the users holdings and creates and object with all relevant info to be displayed on screen
     
-    @holdings.each do |holding|
-        @holdingsObj[i] = {
-              "stock_name" => holding.stock_symbol,
-              "openingPrice" => IEX::Resources::OHLC.get(holding.stock_symbol).open.price,
-              "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
-              "shares" => holding.shares,
-              }
+    # @holdings.each do |holding|
+    #     @holdingsObj[i] = {
+    #           "stock_name" => holding.stock_symbol,
+    #           "openingPrice" => IEX::Resources::OHLC.get(holding.stock_symbol).open.price,
+    #           "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
+    #           "shares" => holding.shares,
+    #           }
 
-              @portfolio_gross += (@holdingsObj[i]["currentPrice"] * holding.shares)
-        i+=1 
-    end 
+    #           @portfolio_gross += (@holdingsObj[i]["currentPrice"] * holding.shares)
+    #     i+=1 
+    # end 
     # @hidden_portfolio_gross = @portfolio_gros
     # p @portfolio_gross = number_to_currency(@portfolio_gross)
     @portfolio_gross

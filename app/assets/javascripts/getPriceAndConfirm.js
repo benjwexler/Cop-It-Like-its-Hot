@@ -21,6 +21,36 @@ let cancelPurchaseBtn = document.getElementById("cancelPurchaseBtn")
 const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
 const hiddenAccountBalance = parseFloat(document.getElementById("hiddenAccountBalance").innerText)
 
+const stocksInPortfolio = document.getElementsByClassName("holdingsStockName")
+const numSharesOfEachStock = document.getElementsByClassName("holdingsSharesInteger")
+const holdingsValuePerStock = document.getElementsByClassName("holdingsValuePerStock")
+
+// the arguments passed to row will actually start at Zero
+
+function evaluateStockPrices(stockSymbol, quantity, row) {
+    $.ajax({
+        url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/price`,
+        // dataType: 'jsonp',
+        success: function (data) { 
+            // console.log(data)
+            console.log(data * quantity) 
+            holdingsValuePerStock[row].innerText = convertToUsCurrency.format((data * quantity))
+        }
+
+    });
+}
+
+console.log(stocksInPortfolio.length)
+
+for(let i=0; i<stocksInPortfolio.length; i++) {
+    console.log(stocksInPortfolio[i].innerText)
+    console.log(numSharesOfEachStock[i].innerText)
+    evaluateStockPrices(stocksInPortfolio[i].innerText, numSharesOfEachStock[i].innerText, i)
+}
+
+
+
+
 function firstIexCall(stockSymbol, quantity ) {
     console.log("Hey")
     $.ajax({
