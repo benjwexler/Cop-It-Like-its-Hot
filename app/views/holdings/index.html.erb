@@ -83,3 +83,49 @@
 
 <%= link_to 'New Holding', new_holding_path %>
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %> 
+
+<form action="/transactions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="nhVaAbv4yLMu2ri6/6X8VUPrnGGvivrUdPLKfhxVB+UU+1RCFMbHj9H5r34JXV84C2mg/7iK3x/Yc42RCtJYng==">
+
+
+
+
+  <div class="field">
+    <label for="transaction_stock_symbol">Stock symbol</label>
+    <input type="text" name="transaction[stock_symbol]" id="transaction_stock_symbol">
+  </div>
+
+  <div class="field">
+    <label for="transaction_shares">Shares</label>
+    <input type="number" name="transaction[shares]" id="transaction_shares">
+  </div>
+
+  <div class="field">
+    <label for="transaction_price_per_share">Price per share</label>
+    <input class="text_field" step="any" type="number" name="transaction[price_per_share]" id="transaction_price_per_share">
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Create Transaction" data-disable-with="Create Transaction">
+  </div>
+</form>
+
+<form action="/holdings" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="xMV/dJ+69GFfA13OoNqc9FXBmrYFVsX0rcuCd25NEuZOK3E3MIT7XaAgSgpWIj+ZHUOmKBJW4D8BSsWYeMpNnQ==">
+
+ 
+
+  <div class="field">
+    <label for="holding_stock_symbol">Stock symbol</label>
+    <input type="text" name="holding[stock_symbol]" id="holding_stock_symbol">
+  </div>
+
+  <div class="field">
+    <label for="holding_shares">Shares</label>
+    <input type="number" name="holding[shares]" id="holding_shares">
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Create Holding" data-disable-with="Create Holding">
+  </div>
+</form>
+
+
