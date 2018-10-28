@@ -10,9 +10,13 @@ class HoldingsController < ApplicationController
     
 
     # displays how much cash the user has for purchases 
-    p @user_account_balance = @user.account_balance
+    @user_account_balance = @user.account_balance
 
-    p @holdings = @user.holdings
+     @holdings = @user.holdings.order(:stock_symbol)
+
+    # p @holdings 
+
+   
 
 
     @holdingsObj = {}
@@ -36,7 +40,7 @@ class HoldingsController < ApplicationController
     end 
     # @hidden_portfolio_gross = @portfolio_gros
     # p @portfolio_gross = number_to_currency(@portfolio_gross)
-    p @portfolio_gross
+    @portfolio_gross
     i =1 
     @length = @holdingsObj.length
 #this while loop will be put into the html.erb file to create the needed rows for portfolio
@@ -76,16 +80,16 @@ class HoldingsController < ApplicationController
     # p holding_params["user_id"]
     # p params[:user_id]
     # p params[:stock_symbol]
-    p params["holding"]["stock_symbol"]
+    params["holding"]["stock_symbol"]
     @user = current_user 
     @holdings = @user.holdings
-    p shares_to_be_added = params["holding"]["shares"].to_i
-    p current_user_id = @user.id
+    shares_to_be_added = params["holding"]["shares"].to_i
+    current_user_id = @user.id
 
     # p @holdings.where(stock_symbol: ["fb"]).length 
   
-    p user_owned_stock = params["holding"]["stock_symbol"]
-    p " ndein edij efije"
+    user_owned_stock = params["holding"]["stock_symbol"]
+   
     if @holdings.where(stock_symbol: [user_owned_stock]).length == 0
       # @holding = Holding.new(holding_params)
       @holding = Holding.new(:user_id => current_user_id, :stock_symbol => user_owned_stock, :shares => shares_to_be_added)
@@ -100,8 +104,8 @@ class HoldingsController < ApplicationController
         end
       end
     else
-      p  holding_to_be_updated = @holdings.where(stock_symbol: [user_owned_stock])[0]
-      p  previous_shares_owned = holding_to_be_updated.shares
+      holding_to_be_updated = @holdings.where(stock_symbol: [user_owned_stock])[0]
+      previous_shares_owned = holding_to_be_updated.shares
       
       current_shares = previous_shares_owned + shares_to_be_added
         # p Holding.find(holding_id_to_be_updated)
