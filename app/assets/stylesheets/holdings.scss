@@ -53,7 +53,7 @@
 #holdingsAndPurchaseContainer {
     height: 500px;
     /* height: auto; */
-    
+   
     width: 100%;
     /* border: 1px solid black; */
     display: flex; 
@@ -140,6 +140,13 @@
 
     font-family: 'Krub', sans-serif;
 }
+
+@media only screen and (max-width: 920px) {
+    #cashBalanceContainer {
+        font-size: 23px;
+    }
+}
+
 @media only screen and (max-width: 460px) {
     #cashBalanceContainer {
         font-size: 24px;
