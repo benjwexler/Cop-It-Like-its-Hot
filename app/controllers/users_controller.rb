@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:update, :destroy]
   before_action :authenticate_user!
   protect_from_forgery except: :show
 
   # GET /users
   # GET /users.json
   def index
+    redirect_to root_url
     @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    redirect_to root_url
     if User.exists?(params[:id].to_i) && params[:id].to_i == current_user.id 
     else
       redirect_to "/users"
@@ -20,11 +22,13 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    redirect_to root_url
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    redirect_to root_url
   end
 
   # POST /users
