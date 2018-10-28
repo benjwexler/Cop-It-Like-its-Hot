@@ -136,10 +136,22 @@
     /* text-align: center; */
     font-size: 30px;
     width: auto;
-    /* text-align: center; */
+    text-align: center; 
 
     font-family: 'Krub', sans-serif;
 }
+@media only screen and (max-width: 460px) {
+    #cashBalanceContainer {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    #cashBalanceContainer {
+        font-size: 20px;
+    }
+}
+
 
 
 
@@ -212,5 +224,9 @@
 }
 
 #hiddenAccountBalance {
+    display: none;
+}
+
+#hiddenForms {
     display: none;
 }
