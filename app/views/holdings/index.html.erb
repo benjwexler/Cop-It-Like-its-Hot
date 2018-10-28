@@ -38,7 +38,7 @@
                 <% else %>
                     <div class="holdingsValuePerStock">
                 <% end %>
-                    <%= number_to_currency(@holdingsObj[i]["currentPrice"])%>
+                    <%= number_to_currency(@holdingsObj[i]["shares"] * @holdingsObj[i]["currentPrice"])%>
                 </div>
             </div>
             <br>

@@ -28,7 +28,7 @@ class HoldingsController < ApplicationController
               "stock_name" => holding.stock_symbol,
               "openingPrice" => IEX::Resources::OHLC.get(holding.stock_symbol).open.price,
               "currentPrice" => IEX::Resources::Price.get(holding.stock_symbol),
-              "shares" => holding.shares
+              "shares" => holding.shares,
               }
 
               @portfolio_gross += (@holdingsObj[i]["currentPrice"] * holding.shares)
