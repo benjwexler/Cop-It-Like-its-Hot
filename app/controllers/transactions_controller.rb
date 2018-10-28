@@ -6,6 +6,8 @@ class TransactionsController < ApplicationController
   def index
     @user = current_user 
     @transactions = @user.transactions
+
+    
     
   end
 
@@ -69,7 +71,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to holdings_url, notice: 'Transaction was successfully created.' }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new }
