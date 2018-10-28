@@ -27,6 +27,21 @@ const holdingsValuePerStock = document.getElementsByClassName("holdingsValuePerS
 
 // the arguments passed to row will actually start at Zero
 
+function getOpeningPrice(stockSymbol) {
+    $.ajax({
+        url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/ohlc`,
+        // dataType: 'jsonp',
+        success: function (data) { 
+            console.log(data.open.price)
+            console.log("OPENING")
+           
+        }
+
+    });
+}
+
+
+
 function evaluateStockPrices(stockSymbol, quantity, row) {
     $.ajax({
         url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/price`,
@@ -45,6 +60,7 @@ console.log(stocksInPortfolio.length)
 for(let i=0; i<stocksInPortfolio.length; i++) {
     console.log(stocksInPortfolio[i].innerText)
     console.log(numSharesOfEachStock[i].innerText)
+    getOpeningPrice(stocksInPortfolio[i].innerText)
     evaluateStockPrices(stocksInPortfolio[i].innerText, numSharesOfEachStock[i].innerText, i)
 }
 
