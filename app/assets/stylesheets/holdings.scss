@@ -53,7 +53,7 @@
 #holdingsAndPurchaseContainer {
     height: 500px;
     /* height: auto; */
-    
+   
     width: 100%;
     /* border: 1px solid black; */
     display: flex; 
@@ -69,6 +69,7 @@
     height: 100%;
     border-right: 1px solid black;
     padding-left: 50px;
+    overflow: scroll;
     
     
 }
@@ -140,6 +141,18 @@
 
     font-family: 'Krub', sans-serif;
 }
+
+@media only screen and (max-width: 920px) {
+    #cashBalanceContainer {
+        font-size: 23px;
+    }
+    #portfolioBalanceText {
+        margin-left: 0px;
+  
+        text-align: center;
+    }
+}
+
 @media only screen and (max-width: 460px) {
     #cashBalanceContainer {
         font-size: 24px;
@@ -203,6 +216,8 @@
         /* background: white; */
         width: 100%;
         order: 2; 
+        overflow: visible;
+        margin: auto;
     }
 }
 

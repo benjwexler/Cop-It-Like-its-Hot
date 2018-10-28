@@ -163,10 +163,10 @@ body {
     text-align: center;
     margin-bottom: 10px;
 }
+// Devise Notification ID
+#notice {
+margin: auto;
+text-align: center;
+color: #7C67CB;
 
-@media only screen and (max-width: 375px) {
-    /* THIS MAKES THE SIGN UP CONTAINER FIT THE FULL SCREEN WIDTH WHEN THE SCREEN SIZE IS LESS THAN 500PX  */
-    #cashBalanceContainer {
-        font-size: 24px;
-    }
 }
