@@ -1,5 +1,5 @@
 class HoldingsController < ApplicationController
-  before_action :set_holding, only: [:show, :edit, :update, :destroy]
+  before_action :set_holding, only: [:update, :destroy]
   before_action :authenticate_user!
   include ActionView::Helpers::NumberHelper
 
@@ -53,17 +53,20 @@ class HoldingsController < ApplicationController
   # GET /holdings/1
   # GET /holdings/1.json
   def show
+    redirect_to root_url
 
     
   end
 
   # GET /holdings/new
   def new
+    redirect_to root_url
     @holding = Holding.new
   end
 
   # GET /holdings/1/edit
   def edit
+    redirect_to root_url
   end
 
   # POST /holdings
