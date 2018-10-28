@@ -53,6 +53,8 @@ class HoldingsController < ApplicationController
   # GET /holdings/1
   # GET /holdings/1.json
   def show
+
+    
   end
 
   # GET /holdings/new
