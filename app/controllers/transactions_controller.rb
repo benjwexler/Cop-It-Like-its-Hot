@@ -30,18 +30,42 @@ class TransactionsController < ApplicationController
     current_user_id = @user.id
     shares_to_be_added = params["transaction"]["shares"].to_i
     user_owned_stock = params["transaction"]["stock_symbol"]
-    p type_of_transaction = params["transaction"]["buy_or_sell"]
-    p price_per_share = params["transaction"]["price_per_share"].to_f
-    p "bnefijnfekle l"
+    type_of_transaction = params["transaction"]["buy_or_sell"]
+    price_per_share = params["transaction"]["price_per_share"].to_f
+   
     # I have hard coded the "buy_or_sell" type to be "BUY". If I add a sell feature this has to be changed
-    @transaction = Transaction.new(:user_id => current_user_id, :buy_or_sell => "BUY", :stock_symbol => user_owned_stock, :shares => shares_to_be_added, :price_per_share => price_per_share)
+    @transaction = Transaction.create(:user_id => current_user_id, :buy_or_sell => "BUY", :stock_symbol => user_owned_stock, :shares => shares_to_be_added, :price_per_share => price_per_share)
     # @transaction = Transaction.new(transaction_params)
     user_account_balance_before_transaction =   @user.account_balance
-    p "XXXXXXXXXXX"
-    p total_price_of_transaction = price_per_share * shares_to_be_added
-    p "XXXXXXXXXXX"
-    p updated_user_account_balance = user_account_balance_before_transaction - total_price_of_transaction
+  
+    total_price_of_transaction = price_per_share * shares_to_be_added
+   
+     updated_user_account_balance = user_account_balance_before_transaction - total_price_of_transaction
     @user.update_attribute(:account_balance, updated_user_account_balance)
+
+    @holdings = @user.holdings
+  #CREATES HOLDING   
+    if @holdings.where(stock_symbol: [user_owned_stock]).length == 0
+      # @holding = Holding.new(holding_params)
+      @holding = Holding.create(:user_id => current_user_id, :stock_symbol => user_owned_stock, :shares => shares_to_be_added)
+      # @holding = Holding.new(holding_params)
+      # respond_to do |format|
+      #   if @holding.save
+      #     format.html { redirect_to @holding, notice: 'Holding was successfully created.' }
+      #     format.json { render :show, status: :created, location: @holding }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @holding.errors, status: :unprocessable_entity }
+      #   end
+      # end
+    else
+      holding_to_be_updated = @holdings.where(stock_symbol: [user_owned_stock])[0]
+     previous_shares_owned = holding_to_be_updated.shares
+      
+      current_shares = previous_shares_owned + shares_to_be_added
+        # p Holding.find(holding_id_to_be_updated)
+        holding_to_be_updated.update_attribute(:shares, current_shares)
+    end 
 
     respond_to do |format|
       if @transaction.save

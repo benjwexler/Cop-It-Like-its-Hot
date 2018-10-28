@@ -15,6 +15,10 @@ const transactionShares = document.getElementById("transaction_shares")
 const transactionPricePerShare = document.getElementById("transaction_price_per_share")
 const holdingStockSymbol = document.getElementById("holding_stock_symbol")
 const holdingShares = document.getElementById("holding_shares")
+const createHoldingBtn = document.getElementById("createHoldingBtn")
+const createTransactionBtn = document.getElementById("createTransactionBtn")
+const confirmPurchaseBtn = document.getElementById("confirmPurchaseBtn")
+
 let getPriceForm = document.getElementById("getPriceForm")
 let confirmTradeContainer = document.getElementById("confirmTradeContainer")
 let getPriceButton = document.getElementById("getPriceButton")
@@ -134,8 +138,15 @@ function returnToGetPrice(event){
     getPriceForm.style.display = "block";
     confirmTradeContainer.style.display = "none"
 }
-getPriceButton.addEventListener("click", hideGetPrice )
+
+function submitHiddenForms() {
+    createTransactionBtn.click()
+    // debugger 
+    // createHoldingBtn.click()
+}
+            getPriceButton.addEventListener("click", hideGetPrice )
             cancelPurchaseBtn.addEventListener("click", returnToGetPrice)
+            confirmPurchaseBtn.addEventListener("click", submitHiddenForms)
 
 });
 
