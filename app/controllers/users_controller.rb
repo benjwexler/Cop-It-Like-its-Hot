@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     redirect_to root_url
-    if User.exists?(params[:id].to_i) && params[:id].to_i == current_user.id 
-    else
-      redirect_to "/users"
-    end 
+    # if User.exists?(params[:id].to_i) && params[:id].to_i == current_user.id 
+    # else
+    #   redirect_to "/users"
+    # end 
   end
 
   # GET /users/new
