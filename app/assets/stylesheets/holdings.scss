@@ -69,6 +69,7 @@
     height: 100%;
     border-right: 1px solid black;
     padding-left: 50px;
+    overflow: scroll;
     
     
 }
@@ -145,6 +146,11 @@
     #cashBalanceContainer {
         font-size: 23px;
     }
+    #portfolioBalanceText {
+        margin-left: 0px;
+  
+        text-align: center;
+    }
 }
 
 @media only screen and (max-width: 460px) {
@@ -210,6 +216,8 @@
         /* background: white; */
         width: 100%;
         order: 2; 
+        overflow: visible;
+        margin: auto;
     }
 }
 
