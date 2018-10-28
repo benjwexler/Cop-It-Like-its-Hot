@@ -1,28 +1,28 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:update, :destroy]
   before_action :authenticate_user!
   # GET /transactions
   # GET /transactions.json
   def index
     @user = current_user 
     @transactions = @user.transactions
-
-    
-    
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+    redirect_to transactions_url
   end
 
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
+    # @transaction = Transaction.new
+    redirect_to transactions_url
   end
 
   # GET /transactions/1/edit
   def edit
+    redirect_to transactions_url
   end
 
   # POST /transactions
