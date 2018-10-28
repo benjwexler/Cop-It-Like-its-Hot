@@ -1,4 +1,4 @@
-<%= image_tag image_path("graphVisual"), :id => "graphGif" %>
+<div id="graphGifContainer"> <%= image_tag image_path("graphVisual"), :id => "graphGif" %> </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -22,3 +22,5 @@
 <% end %>
 
     </div>
+
+    <% p params["controller"]%>
