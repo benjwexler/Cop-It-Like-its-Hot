@@ -10,6 +10,11 @@ const convertToUsCurrency = new Intl.NumberFormat('en-US', {
 
 
 $(function(){
+const transactionStockSymbol = document.getElementById("transaction_stock_symbol")
+const transactionShares = document.getElementById("transaction_shares")
+const transactionPricePerShare = document.getElementById("transaction_price_per_share")
+const holdingStockSymbol = document.getElementById("holding_stock_symbol")
+const holdingShares = document.getElementById("holding_shares")
 let getPriceForm = document.getElementById("getPriceForm")
 let confirmTradeContainer = document.getElementById("confirmTradeContainer")
 let getPriceButton = document.getElementById("getPriceButton")
@@ -28,8 +33,16 @@ function firstIexCall(stockSymbol, quantity ) {
             fullPrice = data * quantity
             if(fullPrice < hiddenAccountBalance) { 
             fullPrice = fullPrice.toFixed(2)
+             
 
-            document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for 6 shares of ${stockSymbol.toUpperCase()}`
+            document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for ${quantity} shares of ${stockSymbol.toUpperCase()}`
+            transactionStockSymbol.value = stockSymbol
+            transactionShares.value = quantity
+            transactionPricePerShare.value = data
+            holdingStockSymbol.value = stockSymbol
+            holdingShares.value = quantity
+            
+            
             // document.getElementById("buyStock").style.display = "none";
             // document.getElementById("priceQuoteContainer").style.display = "flex";
             } else {
