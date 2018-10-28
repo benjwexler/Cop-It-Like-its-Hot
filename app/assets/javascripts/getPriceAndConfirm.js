@@ -4,11 +4,6 @@ const convertToUsCurrency = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2
   })
 
-  console.log(convertToUsCurrency.format(1000))
-    
-
-
-
 $(function(){
 const transactionStockSymbol = document.getElementById("transaction_stock_symbol")
 const transactionShares = document.getElementById("transaction_shares")
@@ -40,11 +35,12 @@ function firstIexCall(stockSymbol, quantity ) {
              
 
             document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for ${quantity} shares of ${stockSymbol.toUpperCase()}`
-            transactionStockSymbol.value = stockSymbol
-            transactionShares.value = quantity
-            transactionPricePerShare.value = data
-            holdingStockSymbol.value = stockSymbol
-            holdingShares.value = quantity
+            // transactionStockSymbol.value = stockSymbol
+            // transactionShares.value = quantity
+            // transactionPricePerShare.value = data
+            // holdingStockSymbol.value = stockSymbol
+            // holdingShares.value = quantity
+            // secondIexCall()
             
             
             // document.getElementById("buyStock").style.display = "none";
@@ -62,6 +58,34 @@ function firstIexCall(stockSymbol, quantity ) {
         }
 
     });
+}
+function secondIexCall() {
+    $.ajax({
+        url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/price`,
+        // dataType: 'jsonp',
+        success: function (data) {
+            console.log(data)
+
+            // fullPrice = data * quantity
+            if(fullPrice < hiddenAccountBalance) { 
+                transactionStockSymbol.value = stockSymbol
+                transactionShares.value = quantity
+                transactionPricePerShare.value = data
+                holdingStockSymbol.value = stockSymbol
+                holdingShares.value = quantity
+                
+            // clickHiddenForm()
+            console.log("Transaction about to be made")
+            debugger 
+            submitHiddenForms()
+            } else {
+                alert("Sorry, insufficient funds")
+            }
+        }, error: function (data) {
+            alert("Please check that you submitted a valid ticker symbol")
+        }
+    });
+
 }
 
     $("#getPriceForm").submit(function (event) {
@@ -141,12 +165,12 @@ function returnToGetPrice(event){
 
 function submitHiddenForms() {
     createTransactionBtn.click()
-    // debugger 
-    // createHoldingBtn.click()
 }
             getPriceButton.addEventListener("click", hideGetPrice )
             cancelPurchaseBtn.addEventListener("click", returnToGetPrice)
-            confirmPurchaseBtn.addEventListener("click", submitHiddenForms)
+            // confirmPurchaseBtn.addEventListener("click", submitHiddenForms)
+            confirmPurchaseBtn.addEventListener("click", secondIexCall)
+            // secondIexCall()
 
 });
 
