@@ -22,7 +22,10 @@ $(document).on('turbolinks:load', function () {
         transSucessNotification.style.display = "none"
     }
 
-    setTimeout(hideTransSucessNotification, 5000)
+    // removes the notification that the transaction was sucessful after 3 seconds on the screen
+    // Without it, if the user creates two transactions in a row they will see a "trans"
+
+    setTimeout(hideTransSucessNotification, 3000)
 
 
 
