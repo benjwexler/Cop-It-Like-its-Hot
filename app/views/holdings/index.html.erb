@@ -23,7 +23,12 @@
                     -
                 </div>
                 <div class="holdingsShares">
-                    <span class="holdingsSharesInteger"> <%= holding.shares%> </span> Shares
+                    <span class="holdingsSharesInteger"> <%= holding.shares%> </span> 
+                    <% if holding.shares > 1 %>
+                        Shares
+                    <% else %>
+                        Share
+                    <% end %>
                 </div>
                
                     <div class="holdingsValuePerStock">
