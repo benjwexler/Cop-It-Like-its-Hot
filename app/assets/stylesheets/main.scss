@@ -48,6 +48,7 @@ body {
     border: 5px solid rgb(234, 255, 0) !important;
     border-left: 3px solid #7C67CB !important;
     border-right: 3px solid #7C67CB !important;
+    border: 5px solid black !important;
     
     // border: 1px dashed white;
     
@@ -94,9 +95,9 @@ body {
     color: #0ECD99;
     background-color: white;
     border-radius: 3%; 
-    border-top: solid 5px #0ECD99;
-    border-bottom: solid 5px rgb(234, 255, 0);
-    border-top: solid 5px rgb(234, 255, 0);
+    // border-top: solid 5px #0ECD99;
+    // border-bottom: solid 5px #7C67CB;
+    // border-top: solid 5px #7C67CB;
 }
 
 @media only screen and (max-width: 500px) {
