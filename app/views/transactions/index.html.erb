@@ -23,9 +23,7 @@
                 <div class="holdingsStockName">
                   <%= transaction.buy_or_sell %> (<%= transaction.stock_symbol %>)
                 </div>
-                <div class="dashContainer">
-                        -
-                </div>
+               
                 <div class="holdingsShares">
                   <%= transaction.shares %> 
                   <% if transaction.shares > 1 %> 
@@ -36,7 +34,10 @@
                 </div>
 
                 <div class="holdingsValuePerStock">
-                    <%= number_to_currency(transaction.price_per_share) %> <span class="perShareText">(per share)</span>
+                    <%= number_to_currency(transaction.price_per_share) %>
+                    <br> 
+                    <span class="perShareText" style="
+                    font-size: 10px">(per share)</span>
                 </div>
                
               </div>

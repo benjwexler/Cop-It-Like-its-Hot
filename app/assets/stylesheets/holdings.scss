@@ -89,7 +89,7 @@
 
 .holdingsStockName {
     height: 100%;
-    width: 20%;
+    width: 40%;
     /* color: rgb(104, 104, 73); */
     color: rgb(199, 14, 205);
     color: #0ECD99;
@@ -98,14 +98,15 @@
 
 .holdingsShares {
     height: 100%;
-    width: 50%;
+    width: 35%;
     color: #7C67CB;
+    
     /* border: 1px solid black */
 }
 
 .holdingsValuePerStock {
     height: 100%;
-    width: 30%;
+    width: 25%;
     width: auto;
     color: #0ECD99;
     /* border: 1px solid black */
@@ -244,4 +245,9 @@
 
 #hiddenForms {
     display: none;
+}
+
+.perShareText {
+    color: black !important;
+    font-size: 10px !important;
 }
