@@ -16,7 +16,8 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @user = current_user 
-    @transactions = @user.transactions
+    @transactions = @user.transactions.order(id: :desc)
+    
   end
 
   # GET /transactions/1
