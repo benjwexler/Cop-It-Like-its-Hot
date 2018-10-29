@@ -142,7 +142,6 @@ function secondIexCall() {
                 
             // clickHiddenForm()
             console.log("Transaction about to be made")
-            debugger 
             submitHiddenForms()
             } else {
                 alert("Sorry, insufficient funds")
