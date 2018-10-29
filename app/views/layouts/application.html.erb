@@ -11,8 +11,12 @@
     <link href="https://fonts.googleapis.com/css?family=Righteous|Spicy+Rice" rel="stylesheet">
     </head>
 
-  
-  <body>
+    <% if params["controller"] == "devise/sessions" || params["controller"] == "devise/registrations"  %>
+  <body style="background: black">
+  <% else %>
+    <body>
+  <% end %>
+
  
   <nav class="navbar navbar-expand-md navbar-light navbarText">
         <a  class="navbar-brand">
