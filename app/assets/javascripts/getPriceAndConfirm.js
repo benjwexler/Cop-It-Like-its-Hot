@@ -156,7 +156,7 @@ function secondIexCall() {
     $("#getPriceForm").submit(function (event) {
         event.preventDefault();
         stockSymbol = document.getElementById("stock_symbol").value
-        stockSymbol - stockSymbol.toUpperCase()
+        stockSymbol = stockSymbol.toUpperCase()
         quantity = document.getElementById("numberOfShares").value
         quantity = quantity.toUpperCase()
         //   var data = $(this).serializeArray();
