@@ -1,3 +1,37 @@
 #notLoggedInBody{
     background: black;
 }
+
+#graphGifContainer {
+    width: 100%;
+    // margin: auto;
+    display: flex;
+    // max-width: 300px;
+}
+
+#graphGif {
+    width: 100%;
+    max-width: 600px;
+    // margin-left: 25%;
+    height: 120px;
+    // border: 25px solid black;
+    margin: auto;
+    // border-radius: 5%;
+}
+
+@media only screen and (min-width: 500px) {
+    /* THIS MAKES THE SIGN UP CONTAINER FIT THE FULL SCREEN WIDTH WHEN THE SCREEN SIZE IS LESS THAN 500PX  */
+    #graphGifContainer {
+        display: none;
+    }
+    #graphGif {
+        display: none;
+    }
+    // body {
+    //     background: white;
+    // }
+
+    .wrapper {
+    margin-top: 120px;
+    }
+}
