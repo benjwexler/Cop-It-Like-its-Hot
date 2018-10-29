@@ -27,7 +27,12 @@
                         -
                 </div>
                 <div class="holdingsShares">
-                  <%= transaction.shares %> Shares
+                  <%= transaction.shares %> 
+                  <% if transaction.shares > 1 %> 
+                  Shares
+                  <% else %> 
+                  Share
+                  <% end %>
                 </div>
 
                 <div class="holdingsValuePerStock">
