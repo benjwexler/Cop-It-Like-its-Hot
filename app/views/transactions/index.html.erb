@@ -20,11 +20,13 @@
 
             <% @transactions.each do |transaction| %>
               <div class="holdingsRow">
-                <div class="holdingsStockName">
-                  <%= transaction.buy_or_sell %> (<%= transaction.stock_symbol %>)
+                <div class="transactionsStockName">
+                  <%= transaction.buy_or_sell %> 
+                  <br>
+                  <span style="color: black">(<%= transaction.stock_symbol %>)</span>
                 </div>
                
-                <div class="holdingsShares">
+                <div class="transactionsShares">
                   <%= transaction.shares %> 
                   <% if transaction.shares > 1 %> 
                   Shares
@@ -33,7 +35,7 @@
                   <% end %>
                 </div>
 
-                <div class="holdingsValuePerStock">
+                <div class="transactionsValuePerStock">
                     <%= number_to_currency(transaction.price_per_share) %>
                     <br> 
                     <span class="perShareText" style="
