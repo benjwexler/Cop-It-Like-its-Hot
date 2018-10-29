@@ -1,24 +1,21 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+<h1> Database Architecture </h1>
 
-* Ruby version
+<p> 
+I chose to implement 3 tables for this project (Users, Holdings, Transactions).
+<br>
+ I could have set the database without the Holdings table, but I believe creating this Table lessons the strain on the back-end tremendously and will help with scaling.
+  
+  To derive a users' portfolio evaluation without a Holdings table would require that I calculate how many shares a user has a stock based on each transaction the user created for a particular stock. A user could potentially make 1000 different trades for 1 stock. If I had a lot of users' this would not be scalable for the server and would slow down load speed.
+  <br>
+</p>
 
-* System dependencies
+<h1> IEX API Calls </h1>
 
-* Configuration
+<p> 
+I chose to implement all API calls on the front-end using AJAX. This allows the page to load extremely quickly.
 
-* Database creation
+</p>
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
