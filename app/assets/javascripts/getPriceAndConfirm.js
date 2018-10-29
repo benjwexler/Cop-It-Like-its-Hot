@@ -158,11 +158,14 @@ function secondIexCall() {
         stockSymbol = document.getElementById("stock_symbol").value
         stockSymbol = stockSymbol.toUpperCase()
         quantity = document.getElementById("numberOfShares").value
-        quantity = quantity.toUpperCase()
+        // quantity = quantity.toUpperCase()
+        quantity = parseFloat(quantity)
         //   var data = $(this).serializeArray();
         let fullPrice
-        console.log(quantity);
+        // console.log(quantity);
         console.log(parseInt(quantity))
+        console.log("fniffj")
+        console.log(Number.isInteger(quantity))
 
         if ((parseInt(quantity)) && (parseInt(quantity) > 0)) {
 
@@ -206,8 +209,10 @@ function hideGetPrice(event) {
         let fullPrice
         console.log(quantity);
         console.log(parseInt(quantity))
+        quantity = parseFloat(quantity)
+        console.log(Number.isInteger(quantity))
 
-        if ((parseInt(quantity)) && (parseInt(quantity) > 0)) {
+        if ((Number.isInteger(quantity)) && (parseInt(quantity) > 0)) {
 
             // if (symbolsObj[`${stockSymbol.toUpperCase()}`] === 1) {
 
