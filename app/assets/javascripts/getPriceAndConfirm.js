@@ -99,8 +99,14 @@ $(document).on('turbolinks:load', function () {
                 if (fullPrice < hiddenAccountBalance) {
                     fullPrice = fullPrice.toFixed(2)
 
-
-                    document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for ${quantity} shares of ${stockSymbol.toUpperCase()}`
+                    if(quantity > 1) {
+                        document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for ${quantity} shares of ${stockSymbol.toUpperCase()}`
+                    } else {
+                        document.getElementById("stockQuote").innerText = `${convertToUsCurrency.format(fullPrice)} is the cost for ${quantity} share of ${stockSymbol.toUpperCase()}`
+                    }
+                    
+                    
+                    
                     // transactionStockSymbol.value = stockSymbol
                     // transactionShares.value = quantity
                     // transactionPricePerShare.value = data
