@@ -52,11 +52,11 @@ $(document).on('turbolinks:load', function () {
                 // console.log(data)
                 console.log(data * quantity)
                 let currentPrice = (data * quantity)
-                if (openingPrice > currentPrice) {
+                if (openingPrice > data) {
                     console.log("F frjfnjmf skimmy")
                     holdingsValuePerStock[row].classList.add("stockInRed")
                     stocksInPortfolio[row].classList.add("stockInRed")
-                } else if (openingPrice === currentPrice) {
+                } else if (openingPrice === data) {
                     holdingsValuePerStock[row].classList.add("stockNeutral")
                     stocksInPortfolio[row].classList.add("stockNeutral")
                 }
