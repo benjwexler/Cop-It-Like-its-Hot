@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 
   # I seem to have set up the routing where there has been an issue twice with verifying the authenticy token and the app crashes. The following line of code:
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   # is supposed to fix the app from crashing, but as I understand this can put my app at risk for Cross-Site Request Forgery (CSRF) attacks.
   
