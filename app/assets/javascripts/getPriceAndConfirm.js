@@ -4,7 +4,7 @@ const convertToUsCurrency = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2
   })
 
-$(function(){
+  $( document ).on('turbolinks:load', function() {
 const transactionStockSymbol = document.getElementById("transaction_stock_symbol")
 const transactionShares = document.getElementById("transaction_shares")
 const transactionPricePerShare = document.getElementById("transaction_price_per_share")
@@ -18,7 +18,7 @@ let getPriceForm = document.getElementById("getPriceForm")
 let confirmTradeContainer = document.getElementById("confirmTradeContainer")
 let getPriceButton = document.getElementById("getPriceButton")
 let cancelPurchaseBtn = document.getElementById("cancelPurchaseBtn")
-const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
+// const hiddenPortfolioValuation = document.getElementById("hiddenPortfolioValuation").innerText
 const hiddenAccountBalance = parseFloat(document.getElementById("hiddenAccountBalance").innerText)
 
 const stocksInPortfolio = document.getElementsByClassName("holdingsStockName")
@@ -27,29 +27,49 @@ const holdingsValuePerStock = document.getElementsByClassName("holdingsValuePerS
 
 // the arguments passed to row will actually start at Zero
 
-function getOpeningPrice(stockSymbol) {
+function getOpeningPrice(stockSymbol, quantity, row) {
     $.ajax({
         url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/ohlc`,
         // dataType: 'jsonp',
         success: function (data) { 
             console.log(data.open.price)
+            let openingPrice = data.open.price
             console.log("OPENING")
-           
+            evaluateStockPrices(stockSymbol, quantity, row, openingPrice)
         }
 
     });
 }
 
+let i = 0
+let portfolioSum = 0
 
-
-function evaluateStockPrices(stockSymbol, quantity, row) {
+function evaluateStockPrices(stockSymbol, quantity, row, openingPrice) {
     $.ajax({
         url: `https://api.iextrading.com/1.0/stock/${stockSymbol}/price`,
         // dataType: 'jsonp',
         success: function (data) { 
             // console.log(data)
             console.log(data * quantity) 
-            holdingsValuePerStock[row].innerText = convertToUsCurrency.format((data * quantity))
+            let currentPrice = (data * quantity)
+            if (openingPrice > currentPrice ) {
+                console.log("F frjfnjmf skimmy")
+                holdingsValuePerStock[row].classList.add("stockInRed")
+                stocksInPortfolio[row].classList.add("stockInRed")
+            } else if (openingPrice === currentPrice) {
+                holdingsValuePerStock[row].classList.add("stockNeutral")
+                stocksInPortfolio[row].classList.add("stockNeutral")
+            }
+            holdingsValuePerStock[row].innerText = convertToUsCurrency.format(currentPrice)
+            console.log(stocksInPortfolio.length)
+            portfolioSum += currentPrice
+            i++ 
+
+            if(i === stocksInPortfolio.length) {
+                console.log("READYREADYREADY")
+                console.log(portfolioSum)
+                document.getElementById("portfolioFloatSum").innerText = convertToUsCurrency.format(portfolioSum)
+            }
         }
 
     });
@@ -60,8 +80,8 @@ console.log(stocksInPortfolio.length)
 for(let i=0; i<stocksInPortfolio.length; i++) {
     console.log(stocksInPortfolio[i].innerText)
     console.log(numSharesOfEachStock[i].innerText)
-    getOpeningPrice(stocksInPortfolio[i].innerText)
-    evaluateStockPrices(stocksInPortfolio[i].innerText, numSharesOfEachStock[i].innerText, i)
+    getOpeningPrice(stocksInPortfolio[i].innerText, numSharesOfEachStock[i].innerText, i)
+    // evaluateStockPrices(stocksInPortfolio[i].innerText, numSharesOfEachStock[i].innerText, i)
 }
 
 
