@@ -13,6 +13,18 @@ $(document).on('turbolinks:load', function () {
     const createHoldingBtn = document.getElementById("createHoldingBtn")
     const createTransactionBtn = document.getElementById("createTransactionBtn")
     const confirmPurchaseBtn = document.getElementById("confirmPurchaseBtn")
+    const transSucessNotification = document.getElementById("notice")
+
+    console.log(transSucessNotification)
+    
+
+    function hideTransSucessNotification() {
+        transSucessNotification.style.display = "none"
+    }
+
+    setTimeout(hideTransSucessNotification, 5000)
+
+
 
     let getPriceForm = document.getElementById("getPriceForm")
     let confirmTradeContainer = document.getElementById("confirmTradeContainer")
