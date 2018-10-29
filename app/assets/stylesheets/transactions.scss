@@ -88,7 +88,7 @@
     display: flex;
 }
 
-.holdingsStockName {
+.transactionsStockName {
     height: 100%;
     width: 25%;
     /* color: rgb(104, 104, 73); */
@@ -97,15 +97,19 @@
     /* border: 1px solid black; */
 }
 
-.holdingsShares {
+.transactionsShares {
     height: 100%;
     width: 40%;
     color: #7C67CB;
    
     /* border: 1px solid black */
 }
+.perShareText {
+    color: black !important;
+    font-size: 10px !important;
+}
 
-.holdingsValuePerStock {
+.transactionsValuePerStock {
     height: 100%;
     width: 30%;
     width: auto;
