@@ -1,9 +1,13 @@
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 375px) {
     .navbar-toggler-icon {
-        width: 20px !important
+        width: 20px !important;
+        height: 22px !important;
     }
     #navbarLogo {
         width: 45px !important;
         height: 45px !important;
+    }
+    #logoText {
+        font-size: 16px;
     }
 }
