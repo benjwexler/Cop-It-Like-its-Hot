@@ -1,4 +1,11 @@
+### Site Demo
+I encourage you to test out the site! You can either sign up and create your own account, or login to a demo account [here](https://thawing-island-46559.herokuapp.com/) using the following credtials:
 
+```
+Email: neonBullTrading@gmail.com
+
+Password: 123456
+```
 
 <h1> Database Architecture </h1>
 
