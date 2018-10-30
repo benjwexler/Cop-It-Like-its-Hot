@@ -1,4 +1,4 @@
-### Site Demo
+<h1> Site Demo </h1>
 I encourage you to test out the site! You can either sign up and create your own account, or login to a demo account [here](https://thawing-island-46559.herokuapp.com/) using the following credtials:
 
 ```
