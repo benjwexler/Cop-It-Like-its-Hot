@@ -1,3 +1,4 @@
+<img src="NeonBullTradingScreenShot.png">
 
 <h1> Database Architecture </h1>
 
